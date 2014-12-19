@@ -1,0 +1,72 @@
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+/*********************************
+ * BIRD ANIMATIONS
+ *********************************/
+@-webkit-keyframes bird-in {
+    0% {
+        left: -200px;
+        bottom: 410px;
+    }
+    30% {
+        bottom: 410px;
+    }
+    50% {
+        -webkit-transform: rotate(10deg);
+    }
+    70% {
+        -webkit-transform: rotate(-25deg);
+    }
+    100% {
+        left: @bird-in-position-left;
+        bottom: @bird-in-position-bottom;
+        -webkit-transform: rotate(0);
+    }
+}
+
+@-webkit-keyframes bird-out {
+    0% {
+        left: @bird-in-position-left;
+        bottom: @bird-in-position-bottom;
+        -webkit-transform: rotate(0);
+    }
+    10% {
+        -webkit-transform: rotate(-20deg);
+        left: @bird-in-position-left;
+        bottom: @bird-in-position-bottom;
+    }
+    20% {
+        -webkit-transform: rotate(0);
+        left: @bird-in-position-left;
+        bottom: @bird-in-position-bottom;
+    }
+    50% {
+        -webkit-transform: rotate(-180deg);
+        left: -100px;
+        bottom: 150px;
+    }
+    100% {
+        left: -500px;
+        bottom: 0;
+    }
+}
+
+/*********************************
+ * HAIRDRYER ANIMATIONS
+ *********************************/
+ @-webkit-keyframes waves {
+    0% {
+        opacity: 1;
+        right: 70px;
+    }
+    100% {
+        right: 100%;
+    }
+ }

@@ -1,0 +1,184 @@
+// Reset
+@import "../components/bootstrap/less/normalize.less";
+
+// define pallettes
+@orange: #ff9800;
+@orange-dark: #f57c00;
+@orange-light: #ffe0b2;
+@brown: #795548;
+@purple: #7c4dff;
+
+@text-dark: #212121;
+@text-light: #ffffff;
+
+@font-size: 14px;
+
+// define positions of various elements
+@bird-in-position-left: 22px;
+@bird-in-position-bottom: 202px;
+@bird-in-speed: 3s;
+@bird-out-speed: 5s;
+@hairdryer-speed: 1.5s;
+@button-away-top: -300px;
+
+@import "animations.less";
+
+body {
+    margin: 0;
+    padding: 0;
+    background: @orange;
+    color: @text-dark;
+    position: relative;
+    font-family: 'Lato', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    font-size: @font-size;
+}
+
+.app {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+.washinfo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: 100;
+    font-size: 20px;
+    -webkit-transition: opacity 1s;
+
+    &__date {
+        font-size: 24px;
+        font-weight: 900;
+    }
+}
+
+.button {
+    display: inline-block;
+    position: relative;
+    top: 0;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    white-space: nowrap;
+    background-color: @purple;
+    color: @text-light;
+    padding: 10px 16px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.23);
+    border: 0;
+    font-weight: 100;
+    font-size: ceil((@font-size * 1.25));
+    outline: 0;
+    border-radius: 4px;
+    transition: all 1s ease-in-out;
+}
+
+.girl {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 247px;
+    overflow: hidden;
+    background: url(../img/girl.png) no-repeat center bottom;
+    background-size: 320px 495px;
+}
+
+.bird {
+    position: absolute;
+    left: -200px;
+    bottom: 410px;
+    display: block;
+    width: 92px;
+    height: 42px;
+    overflow: hidden;
+    background: url(../img/bird.png) no-repeat center center;
+    background-size: 92px 42px;
+}
+
+.hairdryer {
+    position: absolute;
+    right: -110px;
+    bottom: 180px;
+    display: block;
+    width: 109px;
+    height: 79px;
+    background: url(../img/hairdryer.png) no-repeat center top;
+    background-size: 109px 79px;
+    -webkit-transition: all @hairdryer-speed;
+
+    &__wheel {
+        position: absolute;
+        top: 10px;
+        right: 9px;
+        display: block;
+        width: 37px;
+        height: 37px;
+        background: url(../img/hairdryer_wheel.png) no-repeat center center;
+        background-size: 37px 37px;
+    }
+
+    &__waves {
+        position: absolute;
+        bottom: 213px;
+        right: 70px;
+        opacity: 0;
+        display: block;
+        width: 52px;
+        height: 32px;
+        background: url(../img/hairdryer_waves.png) no-repeat center center;
+        background-size: 52px 32px;
+    }
+}
+
+.dirty {
+    .girl {
+        -webkit-transition: background-position 0;
+        -webkit-transition-delay: @bird-in-speed;
+        background-position: center top;
+    }
+
+    .bird {
+        -webkit-animation: bird-in @bird-in-speed;
+    }
+}
+
+.washing {
+    .washinfo {
+        opacity: 0;
+    }
+
+    .girl {
+        -webkit-transition-delay: @hairdryer-speed;
+        background-position: center bottom;
+    }
+
+    .bird {
+        -webkit-animation: bird-out @bird-out-speed;
+        -webkit-animation-delay: @hairdryer-speed;
+    }
+
+    .hairdryer {
+        right: 12px;
+
+        &__wheel {
+            -webkit-animation: spin 1s linear infinite;
+            -webkit-animation-delay: @hairdryer-speed;
+        }
+
+        &__waves {
+            -webkit-animation: waves @bird-out-speed;
+            -webkit-animation-delay: @hairdryer-speed;
+        }
+    }
+}
+
+.cant-clean {
+    .button {
+        top: @button-away-top;
+    }
+}

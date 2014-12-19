@@ -15,17 +15,32 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/2.0.8/es5-shim.min.js"></script>
     <![endif]-->
 
-    <link href="css/bootstrap.css" rel="stylesheet" />
-    <link href="css/app.css" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/css?family=Lato:100,900&subset=latin,latin-ext" type="text/css" rel="stylesheet">
+    <link href="css/app.css" type="text/css" rel="stylesheet">
 </head>
 
 <body id="ng-app" ng-app="WlosyMalgosi">
 
-    <div class="container-fluid">
-        <div ng-controller="WashCtrl">
-            <h4><small>Ostatni raz włosy myłaś</small> {{ washes.last | washDate }}</h4>
+    <div class="app" ng-controller="WashCtrl">
+        <div class="app__container" ng-class="{
+            'dirty': status == 'dirty',
+            'dirty washing': status == 'washing',
+            'cant-clean': !showButton
+        }">
+            <div class="washinfo" ng-if="washes.last">
+                ostatni raz włosy myłaś<br>
+                <span class="washinfo__date">{{ washes.last | washDate }}</span>
+            </div>
+            <div class="washinfo washinfo--none" ng-if="!washes.last">
+                jeszcze chyba w ogóle nie myłaś włosów...
+            </div>
 
-            <button type="button" class="btn btn-lg btn-success" ng-click="washNow()">Umyj teraz</button>
+            <button type="button" class="button" ng-click="washNow()">umyj teraz</button>
+
+            <div class="bird"></div>
+            <div class="hairdryer__waves"></div>
+            <div class="hairdryer"><div class="hairdryer__wheel"></div></div>
+            <div class="girl"></div>
         </div>
     </div>
 

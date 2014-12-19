@@ -16,7 +16,7 @@ var jsIncludes = [
 ];
 
 var cssIncludes = [
-    'less/**/*.less'
+    'less/app.less'
 ];
  
 gulp.task('js', function () {
@@ -35,5 +35,5 @@ gulp.task('css', function() {
 });
 
 gulp.task('watch', ['css'], function () {
-    gulp.watch(cssIncludes, ['css']);
+    gulp.watch('less/**/*.less', ['css']);
 });
