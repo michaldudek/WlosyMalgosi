@@ -269,7 +269,7 @@ body {
 .washinfo {
   margin-top: 20px;
   margin-bottom: 20px;
-  font-weight: 100;
+  font-weight: 300;
   font-size: 20px;
   -webkit-transition: opacity 1s;
 }
@@ -291,7 +291,7 @@ body {
   padding: 10px 16px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.23);
   border: 0;
-  font-weight: 100;
+  font-weight: 300;
   font-size: 18px;
   outline: 0;
   border-radius: 4px;
